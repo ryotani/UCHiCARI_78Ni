@@ -1,0 +1,53 @@
+# Detector parameters ==========================================================
+/Target/Construct
+/BeamTube/Construct
+/HRarray/detector/enableCapsules
+/HRarray/detector/enableCryostats
+/HRarray/Construct
+
+# Set reaction parameters ======================================================
+/Target/Material MINOS
+/Target/Thickness 100 mm  # 
+/Target/SetPosition_Z -20.0 cm
+
+/BeamTube/R_max 9.6 cm
+/BeamTube/R_min 9.1 cm
+/BeamTube/Length 30 cm
+/BeamTube/Shift -10 cm
+#/BeamTube/Shield1Thick -1 mm
+#/BeamTube/Shield1Material Pb
+#/BeamTube/Shield2Thick -1 mm
+#/BeamTube/Shield2Material Sn
+
+/BeamIn/A 80
+/BeamIn/Z 30
+/BeamIn/KEu 260 MeV
+/BeamIn/Dpp 0.02
+/BeamIn/Focus/DX 0. mm
+/BeamIn/Focus/DY 0. mm
+/BeamOut/TargetA 1
+/BeamOut/TargetZ 1
+/BeamOut/DA -2
+/BeamOut/DZ -2
+/BeamOut/LevelDataFile input/ni78_1067keV_0ps.lvldata
+/BeamOut/ProjectileExcitation 1067 keV
+/BeamOut/AngDistSigmaA 0.000 rad
+/BeamOut/AngDistSigmaB 0.000 rad
+/BeamOut/Update
+
+# Print simulation parameters to stdout ========================================
+/Target/Report
+/ExpHall/Report
+
+# Tracking parameters ==========================================================
+#/GammaPrint/Track_Set
+#/IonPrint/Track_Set
+
+# Output parameters ============================================================
+/Mode2/PackingRes 5.0 mm
+#/Mode2/Print
+/Mode2/Filename data/p3p_1067keV_1000evt_0ps.dat 
+#/Mode2/FirstInteractions MBcoordinates.dat
+/Mode2/MINOS
+
+/run/beamOn 1000
