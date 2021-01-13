@@ -17,12 +17,12 @@ int life[3]={0,50,165}, ;
 //TF1 *expf=new TF1("expf","TMath::Exp(-1.36e-3*x)",0,4000);
 //TF1 *expf=new TF1("expf","4.69115*TMath::Exp(-2.877e-3*x) + 2.21611*TMath::Exp(-3.0347e-4*x)",0,4000); // not used?
 TH1F *h[3][nn], *hcomp[3];
-TH1F* htmp[18], *hresp[8], *hdraw[18];
+TH1F *htmp[18], *htmp_rebin[18], *hresp[8], *hdraw[18];
 TGraph *gresp[8];
-TF1 *func[8], *fnull[8];
+TF1 *func[9], *fnull[9];
 TF1 *whole[2];
 TF1 *test;
-double chiwhole[2], chinull[8], ndfwhole[2], ndfnull[8], likewhole[2], likenull[8];
+double chiwhole[2], chinull[9], ndfwhole[2], ndfnull[9], likewhole[2], likenull[9];
 TCanvas *canvas[1];
 TPad *p[5];
 TLegend *l[2];
@@ -90,9 +90,9 @@ int loadresp(void){
     //func[i]= new TF1("func",[&](double*x, double *p){ return p[0]*gresp[i]->Eval(x[0]); }, 0, 5000, 1);
   }
   whole[0]=new TF1("whole0",&whole0 ,0,5000,9);
-  whole[1]=new TF1("whole1",&whole1 ,0,5000,7);
-  whole[0]->SetNpx(185);
-  whole[1]->SetNpx(185);
+  whole[1]=new TF1("whole1",&whole1 ,0,5000,8);
+  //whole[0]->SetNpx(185);
+  //whole[1]->SetNpx(185);
   return 0;
 }
 
@@ -121,7 +121,7 @@ void drawhist(int numhist, int *index, char **leg, char*output ,TCanvas* c){
     htmp[i]->Draw(); //i==0?"":"same");
     htmp[i]->SetLineColor(1);//colornum[i]);
     htmp[i]->SetLineStyle(i/5);
-    htmp[i]->SetLineWidth(2);
+    htmp[i]->SetLineWidth(3);
     l[i]->AddEntry(htmp[i], leg[i], "L");
   
     htmp[i]->GetXaxis()->SetTitleFont(43);
@@ -130,11 +130,12 @@ void drawhist(int numhist, int *index, char **leg, char*output ,TCanvas* c){
     htmp[i]->GetYaxis()->SetLabelFont(43);
 
     htmp[i]->SetTitle("");
-    htmp[i]->GetYaxis()->SetTitle(Form("counts / %i keV",bin));
+    htmp[i]->GetYaxis()->SetTitle(Form("counts / %i keV, %i keV",bin, 2*bin));
     htmp[i]->GetYaxis()->SetTitleSize(20);
     htmp[i]->GetYaxis()->SetTitleOffset(1.7);
     htmp[i]->GetYaxis()->SetLabelSize(20);
     htmp[i]->GetYaxis()->SetLabelOffset(0.01);
+    htmp[i]->GetYaxis()->SetRangeUser(0,i==0?49:19.8);
     htmp[i]->GetXaxis()->SetTitle("E_{#gamma} (keV)");
     htmp[i]->GetXaxis()->SetTitleSize(i+1==numhist?20:0);
     htmp[i]->GetXaxis()->SetTitleOffset(2);
@@ -143,18 +144,21 @@ void drawhist(int numhist, int *index, char **leg, char*output ,TCanvas* c){
     htmp[i]->GetXaxis()->SetRangeUser(100,3800);
     //
     hdraw[i]=(TH1F*)htmp[i]->Clone();
+    htmp_rebin[i] = (TH1F*)htmp[i]->Clone();
+    htmp_rebin[i] -> Rebin(2);
+    htmp[i]->Fit(whole[i],"","c",100,3800);
     htmp[i]->Fit(whole[i],"WQ","c",100,3800);
     htmp[i]->Fit(whole[i],"L","c",100,3800);
     chiwhole[i]=whole[i]->GetChisquare();
     likewhole[i]=likelihood(htmp[i]);
     ndfwhole[i]=whole[i]->GetNDF();
-    cout<<chiwhole[i]<<" likelihood"<<likewhole[i]<<" NDF"<< ndfwhole[i] <<endl;
-    //
-    for(int j=(i==0?0:5);j<(i==0?5:8);j++){
+    cout<<chiwhole[i]<<" likelihood: "<<likewhole[i]<<" NDF"<< ndfwhole[i] <<endl;
+    for(int j=(i==0?0:5);j<(i==0?5:9);j++){
       func[j]=new TF1(*whole[i]);
       fnull[j]=new TF1(*whole[i]);
+      func[j]->SetName(Form("func%i",j));
       fnull[j]->SetName(Form("fnull%i",j));
-      for(int k=0;k<(i==0?9:7);k++){
+      for(int k=0;k<(i==0?9:8);k++){
 	if((j-5*i)!=k){
 	  func[j]->SetParameter(k,0.);
 	}else{
@@ -168,12 +172,17 @@ void drawhist(int numhist, int *index, char **leg, char*output ,TCanvas* c){
       //
       htmp[i]->Fit(fnull[j],"L","",100,3800);
       chinull[j]=fnull[j]->GetChisquare();
-      likenull[j]=likelihood(htmp[j]);
+      likenull[j]=likelihood(htmp[i]); //was htmp[j]
       ndfnull[j]=fnull[j]->GetNDF();
-      cout<<"Func"<<j<<" Chi:"<<chinull[j]<<" likelihood"<<likenull[j]<<" NDF"<<ndfnull[j]<<endl;
+      cout<<"Func"<<j<<" Chi:"<<chinull[j]<<" likelihood: "<<likenull[j]<<" NDF"<<ndfnull[j]<<endl;
     }
+    //
+    hdraw[i]->SetLineWidth(1);
+    hdraw[i]->SetLineColor(12);
+    //hdraw[i]->SetLineStyle(10);
     hdraw[i]->Draw();
-    for(int j=(i==0?0:5);j<(i==0?5:8);j++){
+    htmp_rebin[i]->Draw("same");
+    for(int j=(i==0?0:5);j<(i==0?5:9);j++){
       func[j]->Draw("same");
       //fnull[j]->Draw("same");
     }
@@ -181,8 +190,8 @@ void drawhist(int numhist, int *index, char **leg, char*output ,TCanvas* c){
   }
 
   for(int i=0; i<2; i++){
-    fout<<endl<<"Whole ,"<<chiwhole[i]<<", likelihood,"<<likewhole[i]<<", NDF,"<< ndfwhole[i] <<endl;
-    for(int j=(i==0?0:5);j<(i==0?5:8);j++){
+    fout<<endl<<"Whole ,"<<chiwhole[i]<<", likelihood, "<<likewhole[i]<<", NDF,"<< ndfwhole[i] <<endl;
+    for(int j=(i==0?0:5);j<(i==0?5:9);j++){
       fout<<"Func"<<j<<"Chi,"<<chinull[j]<<", likelihood, "<<likenull[j]<<", NDF,"<<ndfnull[j]<<endl;
     }
     l[i]->SetTextFont(43);
@@ -218,7 +227,8 @@ double whole1(double *x, double *param){
   for(int i=0;i<2;i++){
     value+=param[i]*gresp[i+5]->Eval(x[0]);
   }
-  value+=param[2]*gresp[4]->Eval(x[0]); //Add 2600
-  value+=  param[3]*TMath::Exp(param[4]*x[0])+param[5]*TMath::Exp(param[6]*x[0]);
+  value+=param[2]*gresp[0]->Eval(x[0]); //Add 583
+  value+=param[3]*gresp[4]->Eval(x[0]); //Add 2600
+  value+=  param[4]*TMath::Exp(param[5]*x[0])+param[6]*TMath::Exp(param[7]*x[0]);
   return value;
 }
