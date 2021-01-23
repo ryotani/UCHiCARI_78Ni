@@ -2,7 +2,7 @@ const int nn = 3, bin=20; //3;
 int Ene[nn]={5293, 3977, 2910};
 int colornum[6]={1,9,8,6,2,4};
 //int Eve[nn]={25700, 32600, 59200}, bin=5, ymax=490; char *output="fig/p3p_78Ni_100";
-int life4=165; int Eve[nn]={145, 184, 334}, ymax=28; char *output=Form("fig/p3p_78Ni_10d_Sep2019_%ips_%ikeV",life4,bin);
+int life4=165; int Eve[nn]={232, 294, 535}, ymax=28; char *output=Form("fig/p3p_78Ni_10d_Sep2019_%ips_%ikeV",life4,bin);
 //int life4=0; int Eve[nn]={1000,1000,1000}, bin=20, ymax=28; char *output=Form("fig/p3p_78Ni_1000eve_Aug2019_%ips",life4);
 int sumeve=0;
 int expeve=(int)(1.02*104./446./(1.36e-3)*9./6.*0.5); //6day ->10day with 90% livetime * 0.5 for Be target
