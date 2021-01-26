@@ -1,5 +1,7 @@
 *.dat
 *~
-files/*
+*root
+*log
+files/
 unused/*
 nohup.out
