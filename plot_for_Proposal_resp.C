@@ -117,6 +117,7 @@ void drawhist(int numhist, int *index, char **leg, char*output ,TCanvas* c){
     cout<<index[i]<<" p"<<((int)(index[i]/9)==0?2:3)<<"p "<<life[index[i]%3]<<"ps "<<hist[(index[i]/3)%3]<<endl;
     htmp[i] = (TH1F*)f[index[i]]->Get(Form("Hist_%s",hist[(index[i]/3)%3]))->Clone();
     htmp[i]->SetStats(0);
+    if(life[index[i]%3]!=0) continue;
     htmp[i]->SetName(Form("h_p%ip_78Ni_10d_Aug2019_%ips_%s_%s",(int)(index[i]/9)==0?2:3,life[index[i]%3],hist[(index[i]/3)%3],output));
     htmp[i]->Draw(); //i==0?"":"same");
     htmp[i]->SetLineColor(1);//colornum[i]);
