@@ -1,0 +1,45 @@
+
+0 (X,X1p) 
+Whole ,166.012, likelihood, 84.6152, NDF,166
+Func0, Chi,182.332, likelihood, 93.2669, NDF,167
+Func1, Chi,183.935, likelihood, 92.2793, NDF,167
+Func2, Chi,166.084, likelihood, 84.6339, NDF,167
+Func3, Chi,171.104, likelihood, 85.9508, NDF,167
+Func4, Chi,200.025, likelihood, 100.394, NDF,167
+
+0 (X,X2p) 
+Whole ,127.693, likelihood, 79.4746, NDF,167
+Func5, Chi,137.931, likelihood, 83.0202, NDF,168
+Func6, Chi,133.984, likelihood, 87.3192, NDF,168
+Func7, Chi,127.849, likelihood, 79.4822, NDF,168
+Func8, Chi,129.998, likelihood, 81.7375, NDF,168
+
+1 (X,X1p) 
+Whole ,171.361, likelihood, 77.1413, NDF,166
+Func0, Chi,183.352, likelihood, 83.7348, NDF,167
+Func1, Chi,192.294, likelihood, 89.5237, NDF,167
+Func2, Chi,172.294, likelihood, 77.2566, NDF,167
+Func3, Chi,175.532, likelihood, 77.7904, NDF,167
+Func4, Chi,205.965, likelihood, 93.9605, NDF,167
+
+1 (X,X2p) 
+Whole ,159.54, likelihood, 91.0579, NDF,167
+Func5, Chi,163.328, likelihood, 92.0289, NDF,168
+Func6, Chi,170.639, likelihood, 102.303, NDF,168
+Func7, Chi,161.962, likelihood, 91.3154, NDF,168
+Func8, Chi,160.3, likelihood, 91.4659, NDF,168
+
+2 (X,X1p) 
+Whole ,190.261, likelihood, 89.8371, NDF,166
+Func0, Chi,206.272, likelihood, 97.8771, NDF,167
+Func1, Chi,199.672, likelihood, 96.032, NDF,167
+Func2, Chi,193.07, likelihood, 91.1386, NDF,167
+Func3, Chi,190.603, likelihood, 89.8409, NDF,167
+Func4, Chi,215.382, likelihood, 112.704, NDF,167
+
+2 (X,X2p) 
+Whole ,143.476, likelihood, 88.3444, NDF,167
+Func5, Chi,149.49, likelihood, 90.3325, NDF,168
+Func6, Chi,148.331, likelihood, 99.7645, NDF,168
+Func7, Chi,148.074, likelihood, 89.0454, NDF,168
+Func8, Chi,145.966, likelihood, 89.7598, NDF,168
