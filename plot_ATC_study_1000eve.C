@@ -2,19 +2,17 @@
 #include "draw_middle_angles.C"
 
 const int nn=100, bin=20; //20;
-char output[500]=Form("p2pp3p_ATC_Study_%ikeV",bin);
-ofstream fout(Form("fig/%s.csv",output));
-ofstream fout_Nsigma("fig/Nsigma-Summary.csv", std::ios_base::app);
-
 int colornum[6]={1,9,8,6,2,4};
 int Eneresp[8]={583,1103,1540,2110,2600, 1067, 2910};
 int Everesp[8]={2000000,2000000,2000000,2000000,2000000,2000000,2000000};
 //
 int Enep2p[]={5293, 3183, 5243, 3703};
 int life4=0;
-int Evep2p[]={321,153,276,199};
+//int Evep2p[]={321,153,276,199};
+int Evep2p[]={1000,1000,1000,1000};
 int Enep3p[]={5293, 3977, 2910};
-int Evep3p[]={145,184,334};
+int Evep3p[]={1000,1000,1000};
+//int Evep3p[]={145,184,334};
 //
 
 gStyle->SetOptFit(0);
@@ -61,7 +59,10 @@ double likelihood(TH1F*h){
   fitter->GetStats(amin, edm, errdef, nvpar, nparx);
   return amin; // Return the log-likelihood ratio
 }
-void plot_ATC_study(void){
+char output[500]=Form("p2pp3p_ATC_Study_%ikeV_1000eve",bin);
+ofstream fout(Form("fig/%s.csv",output));
+
+void plot_ATC_study_1000eve(void){
   int dummy2[]={0,9};
   char*legend2 []={"^{79}Cu(X,Xp)^{78}Ni","^{80}Zn(X,X2p)^{78}Ni"};
   for(int i=0;i<1;i++) canvas[i]= new TCanvas(Form("c%i",i),Form("c%i",i),900,900);
@@ -70,14 +71,11 @@ void plot_ATC_study(void){
   loadresp();
   //
   canvas[0]->SaveAs(Form("fig/%s.pdf[",output));
-  fout_Nsigma << "h_Actual, ";
   drawhist(2,dummy2,legend2,output, canvas[0], h_Actual, 0);
-  fout_Nsigma << "h_ATC_minus_MB, ";
   drawhist(2,dummy2,legend2,output, canvas[0], h_AddATC, 1);
-  fout_Nsigma << "h_ATC_minus_SC, ";
   drawhist(2,dummy2,legend2,output, canvas[0], h_AddATC_SCout, 2);
   canvas[0]->SaveAs(Form("fig/%s.pdf]",output));
-  fout_Nsigma << endl;
+
 }
 
 ///////////////////
@@ -104,9 +102,9 @@ int loadsim(void){
       h_AddATC[0]=(TH1F*)(htmp2->Clone());
       h_AddATC_SCout[0]=(TH1F*)(htmp3->Clone());
       */
-      h_Actual[0] -> FillRandom("expf", (int)(1.02/(1.36e-3)*9./6.*0.5));
-      h_AddATC[0] -> FillRandom("expf", (int)(1.02/(1.36e-3)*9./6.*0.5*1.15));
-      h_AddATC_SCout[0] -> FillRandom("expf", (int)(1.02/(1.36e-3)*9./6.*0.5*1.15));
+      h_Actual[0] -> FillRandom("expf", (int)(1.02/(1.36e-3)*9./6.*0.5*2.));
+      h_AddATC[0] -> FillRandom("expf", (int)(1.02/(1.36e-3)*9./6.*0.5*1.15*2.));
+      h_AddATC_SCout[0] -> FillRandom("expf", (int)(1.02/(1.36e-3)*9./6.*0.5*1.15*2.));
     }
       //}else{
       h_Actual[0]->Add(htmp1);
@@ -218,7 +216,7 @@ void drawhist(int numhist, int *index, char **leg, char*output ,TCanvas* c, TH1F
     hist[i]->GetYaxis()->SetTitleOffset(1.7);
     hist[i]->GetYaxis()->SetLabelSize(20);
     hist[i]->GetYaxis()->SetLabelOffset(0.01);
-    hist[i]->GetYaxis()->SetRangeUser(0,i==0?30.8:10.8);
+    hist[i]->GetYaxis()->SetRangeUser(0,i==0?60.8:20.8);
     hist[i]->GetXaxis()->SetTitle("E_{#gamma} (keV)");
     hist[i]->GetXaxis()->SetTitleSize(i+1==numhist?20:0);
     hist[i]->GetXaxis()->SetTitleOffset(2);
@@ -281,7 +279,6 @@ void drawhist(int numhist, int *index, char **leg, char*output ,TCanvas* c, TH1F
       double Nsigma = TMath::NormQuantile(TMath::Prob(2.*(likenull[j]-likewhole[config_index][i]),1))*(-1.0);
       fout<<"Ene, "<<Eneresp[j<7?(j):((j-7)*4)]<<", ";
       fout<<"Func"<<j<<", Chi,"<<chinull[j]<<", likelihood, "<<likenull[j]<<", Nsigma, "<<Nsigma<<", NDF,"<<ndfnull[j]<<endl;
-      fout_Nsigma << Nsigma <<", ";
     }
     l[i]->SetTextFont(43);
     l[i]->SetTextSize(20);

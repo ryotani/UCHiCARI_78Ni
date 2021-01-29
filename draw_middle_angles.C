@@ -23,6 +23,8 @@ void draw_comparison(char caltrname[200], int printout, TH1F* h_Actual, TH1F *h_
   }
   TChain *caltr = new TChain("caltr");
   caltr->Add(caltrname);
+  TProof::Open("");
+  caltr->SetProof();
   TH1F *h_GR = new TH1F("h_GR", "2910 keV wo AB (Black: 2x4crystals of SC, Blue: 2x3crystals of MB, Red: 2crystals of P3); Energy / keV; Counts / 20 keV", 200, 200, 4200);
   TH1F *h_SC = new TH1F("h_SC", "2910 keV wo AB (Black: 2x4crystals of SC, Blue: 2x3crystals of MB, Red: 2crystals of P3); Energy / keV; Counts / 20 keV", 200, 200, 4200);
   TH1F *h_MB = new TH1F("h_MB", "2910 keV wo AB (Black: 2x4crystals of SC, Blue: 2x3crystals of MB, Red: 2crystals of P3); Energy / keV; Counts / 20 keV", 200, 200, 4200);
