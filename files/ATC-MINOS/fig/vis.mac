@@ -1,0 +1,54 @@
+# to run
+#UCHRarray
+#/control/execute vis.mac
+
+/Target/Construct
+#/BeamTube/Construct
+/HRarray/detector/enableCapsules
+/HRarray/detector/enableCryostats
+/HRarray/Construct
+
+/Target/Material MINOS
+/Target/Thickness 100 mm  # 
+/Target/SetPosition_Z -20.0 cm
+
+#/BeamTube/R_max 9.6 cm
+#/BeamTube/R_min 9.1 cm
+#/BeamTube/Length 30 cm
+#/BeamTube/Shift -10 cm
+##/BeamTube/Shield1Thick -1 mm
+##/BeamTube/Shield1Material Pb
+##/BeamTube/Shield2Thick -1 mm
+##/BeamTube/Shield2Material Sn
+
+/Target/Report
+/BeamTube/Report
+
+#start visualizer
+#/vis/open VRML2FILE
+/vis/open DAWNFILE
+
+# Disable auto refresh and quieten vis messages while scene and
+#   trajectories are established 
+/vis/viewer/set/autoRefresh false
+/vis/verbose errors
+
+# setup viewer
+/vis/drawVolume 
+/vis/viewer/set/style surface
+/vis/viewer/set/hiddenEdge
+#/vis/scene/add/axes 
+#/vis/scene/add/trajectories
+#/vis/scene/add/hits
+/vis/scene/endOfEventAction accumulate 
+
+# set viewing angle and zoom
+#/vis/viewer/set/viewpointThetaPhi 150 20
+/vis/viewer/set/viewpointThetaPhi 180 0
+/vis/viewer/zoom 1
+
+# Re-establish auto refreshing and verbosity
+/vis/viewer/set/autoRefresh true
+/vis/verbose warnings
+
+/vis/viewer/flush

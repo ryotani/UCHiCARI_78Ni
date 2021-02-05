@@ -1,0 +1,48 @@
+VerboseLevel:		0
+LastEvent:		0
+
+#Event Building
+EventTimeDiff:	300
+
+Target.X:		0
+Target.Y:		0
+Target.Z:		0
+Target.Beta:    	0.6038845
+Ejectile.Mass:		77.9483 #amu
+
+Average.Beta.After:     0.5809241
+
+#Use.MINOS:		1
+#MINOS.XY.Resolution:	2.5 #mm
+#MINOS.Z.Resolution:	2.5 #mm
+
+#MINOS.Beta.Coefficient.0:	-4.86839e+03
+#MINOS.Beta.Coefficient.1:	 4.37156e+03
+#MINOS.Beta.Coefficient.2:	-1.07708e+03
+
+#Target.Angle.Resolution:	5 #mrad
+#Target.Pos.Resolution:		2 #mm
+#Target.Beta.Resolution:		0.0001  # ~0.02 %
+
+#Type of addback to be used. 0 is crystal (no addback), 1 is cluster, 2 is caloriemter
+AddBackType:	1
+
+Average.MBPositions:	MBcoordinates.dat
+Sim.Gretina.Position.Resolution:	1
+Sim.Resolution.File:    ../averageresolution.res
+Sim.Threshold.File:    	../averagethresholds.thresh
+
+#Which hole contains each detector
+Detector.0:	1
+Detector.1:	2
+Detector.2:	101
+Detector.3:	201
+Detector.4:	202
+Detector.5:	203
+Detector.6:	204
+Detector.7:	205
+Detector.8:	206
+Detector.9:	207
+Detector.10:	208
+Detector.11:	209
+Detector.12:	210

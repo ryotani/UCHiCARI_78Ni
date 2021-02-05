@@ -1,0 +1,28 @@
+#Configuration for NP-PAC20 August 30
+# Euler angles (degrees) and shifts (mm) of clusters
+# cl cl#  psi (Rz)   theta (Ry)    phi (Rz)  dx dy dz
+## RCNP 60 degree, distance -50 mm * sin 60deg, cos 60deg
+   0    0       125     60      180  	43.3013		0		-25.000
+## LBNL 60 degree, distance -5 cm
+   1    1       0	60      0	-43.3013	0		-25.000
+### ATC (Taken from DAGATA) -20 cm WRT center? 0, sin 60deg, cos 60deg
+ 100	2	60	60	90	0.0	        173.2051        -100.00
+## MB 30 degree ring, at 22 cm from target
+# 200    3       0       30      0       110     	0		190.526
+# 201    3       60      30      60      55      	95.2628 	190.526
+# 202    3       120     30      120     -55     	95.2628 	190.526
+# 203    3       180     30      180     -110    	0     		190.526
+# 204    3       240     30      240     -55     	-95.2628        190.526
+# 205    3       300     30      300     55      	-95.2628        190.526
+## RCNP 70 degree, distance -5 cm
+#   0    0       125      70      180  	46.9846		0		-17.101
+## LBNL 70 degree, distance -5 cm
+#   1    1       0	70      0  	-46.9846	0		-17.101
+### ATC (Taken from DAGATA) -20 cm?
+# 100	2	60	65	-150	-156.977        -90.6308        84.5237
+## MB at 100 deg, at 20 cm from target
+# 206	3	0	100	45	139.273		139.273		-34.7296
+# 207	3	0	100	135	-139.273        139.273		-34.7296
+### SC at 70 degree, at 20 cm from target
+# 208	4	0	70	45	132.893		132.893		68.404
+# 209	4	0	70	135	-132.893	132.893		68.404

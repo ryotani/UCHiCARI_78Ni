@@ -2,6 +2,8 @@
 *~
 *root
 *log
-files/
+*data
+*ps.mac
+#files/
 unused/*
 nohup.out

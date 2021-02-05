@@ -1,0 +1,45 @@
+
+0 (X,X1p) 
+Whole ,158.124, likelihood, 70.9775, NDF,166
+Ene, 583, Func0, Chi,240.466, likelihood, 141.693, Nsigma, 11.8345, NDF,167
+Ene, 1103, Func1, Chi,232.872, likelihood, 122.444, Nsigma, 10.0776, NDF,167
+Ene, 1540, Func2, Chi,174.22, likelihood, 79.5787, Nsigma, 3.98598, NDF,167
+Ene, 2110, Func3, Chi,187.671, likelihood, 82.4455, Nsigma, 4.64813, NDF,167
+Ene, 2600, Func4, Chi,487.282, likelihood, 189.868, Nsigma, 15.3753, NDF,167
+
+0 (X,X2p) 
+Whole ,187.389, likelihood, 86.955, NDF,167
+Ene, 1067, Func5, Chi,223.697, likelihood, 108.451, Nsigma, 6.45263, NDF,168
+Ene, 2910, Func6, Chi,232.29, likelihood, 135.193, Nsigma, 9.75215, NDF,168
+Ene, 583, Func7, Chi,259.519, likelihood, 126.047, Nsigma, 8.76436, NDF,168
+Ene, 2600, Func8, Chi,276.996, likelihood, 116.991, Nsigma, 7.66214, NDF,168
+
+1 (X,X1p) 
+Whole ,227.694, likelihood, 87.4609, NDF,166
+Ene, 583, Func0, Chi,345.147, likelihood, 167.694, Nsigma, 12.6131, NDF,167
+Ene, 1103, Func1, Chi,326.653, likelihood, 138.607, Nsigma, 10.0458, NDF,167
+Ene, 1540, Func2, Chi,248.142, likelihood, 99.8337, Nsigma, 4.83848, NDF,167
+Ene, 2110, Func3, Chi,233.478, likelihood, 88.8627, Nsigma, 1.31618, NDF,167
+Ene, 2600, Func4, Chi,621.021, likelihood, 230.11, Nsigma, 16.8498, NDF,167
+
+1 (X,X2p) 
+Whole ,161.934, likelihood, 85.9863, NDF,167
+Ene, 1067, Func5, Chi,195.341, likelihood, 105.047, Nsigma, 6.06378, NDF,168
+Ene, 2910, Func6, Chi,220.409, likelihood, 145.399, Nsigma, 10.8374, NDF,168
+Ene, 583, Func7, Chi,231.051, likelihood, 128.199, Nsigma, 9.11343, NDF,168
+Ene, 2600, Func8, Chi,237.528, likelihood, 114.27, Nsigma, 7.42998, NDF,168
+
+2 (X,X1p) 
+Whole ,193.964, likelihood, 80.6705, NDF,166
+Ene, 583, Func0, Chi,294.904, likelihood, 155.12, Nsigma, 12.1459, NDF,167
+Ene, 1103, Func1, Chi,277.188, likelihood, 131.929, Nsigma, 10.057, NDF,167
+Ene, 1540, Func2, Chi,226.46, likelihood, 96.6463, Nsigma, 5.53225, NDF,167
+Ene, 2110, Func3, Chi,197.513, likelihood, 82.9272, Nsigma, 1.82993, NDF,167
+Ene, 2600, Func4, Chi,500.324, likelihood, 198.967, Nsigma, 15.3366, NDF,167
+
+2 (X,X2p) 
+Whole ,186.469, likelihood, 101.04, NDF,167
+Ene, 1067, Func5, Chi,222.231, likelihood, 121.937, Nsigma, 6.35932, NDF,168
+Ene, 2910, Func6, Chi,251.39, likelihood, 155.156, Nsigma, 10.3372, NDF,168
+Ene, 583, Func7, Chi,266.094, likelihood, 147.131, Nsigma, 9.52949, NDF,168
+Ene, 2600, Func8, Chi,267.785, likelihood, 130.315, Nsigma, 7.56226, NDF,168
